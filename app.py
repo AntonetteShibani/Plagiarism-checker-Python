@@ -2,6 +2,13 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from sklearn.metrics import jaccard_score as jaccard_similarity_score
+#Note: Updated jaccard_score function for scikit-learn 1.3.2
+
+y_pred = [0, 2, 1, 3]
+y_true = [0, 1, 2, 3]
+print(jaccard_similarity_score(y_true, y_pred,average='micro'))
+
 student_files = [doc for doc in os.listdir() if doc.endswith('.txt')]
 student_notes = [open(_file, encoding='utf-8').read()
                  for _file in student_files]
